@@ -1,16 +1,23 @@
 <?php
+  get_header();
+  get_template_part('template-parts/breadcrumb');
+?>
 
-get_header();
+<main>
 
+<?php
 if ( have_posts() ) :
-    while ( have_posts() ) : the_post();
-        the_title( '<h2>', '</h2>' );
-        the_content();
-    endwhile;
+  while ( have_posts() ) : the_post();
+    get_template_part('template-parts/content');
+  endwhile;
 else:
-    _e( 'No posts yet.', 'osterbro' );
+  _e( 'No posts yet.', 'osterbro' );
 endif;
+?>
 
-get_footer();
+</main>
 
+<?php
+  get_template_part('template-parts/aside');
+  get_footer();
 ?>
